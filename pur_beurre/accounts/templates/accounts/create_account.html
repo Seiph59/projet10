@@ -1,0 +1,26 @@
+{% extends 'welcome/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+  <link href="{% static 'accounts/css/style.css' %}" rel="stylesheet">
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center ">
+        <div class="col-lg-10 align-self-start">
+          <h1 class="text-uppercase text-white font-weight-bold">Créez votre compte</h1>
+          <hr class="divider my-4">
+        </div>
+        <div class="col-lg-10 align-content-justify">
+          <form method="POST">
+            {% csrf_token %}
+                {{ form|crispy }}
+            <button class="btn btn-outline-info" type="submit"> S'inscrire</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+{% endblock %}

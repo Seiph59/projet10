@@ -1,0 +1,35 @@
+form {
+    text-align: justify;
+    width: 75%;
+    color: white;
+}
+
+.text-muted {
+    color: white !important;
+}
+
+label {
+    text-align: left;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+hr.divider {
+
+    max-width: 6.25rem;
+}
+
+.btn-outline-info {
+    color:white;
+    background-color:#f4623a;
+    border-color:#f4623a;
+}
+
+.btn-outline-info:hover {
+    color:white;
+    background-color:#cf380e;
+    border-color:#cf380e;
+}
