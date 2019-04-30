@@ -124,5 +124,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'welcome:home'
+LOGOUT_REDIRECT_URL ='welcome:home'
+LOGIN_URL = 'login'
 
 INTERNAL_IPS = ['127.0.0.1']

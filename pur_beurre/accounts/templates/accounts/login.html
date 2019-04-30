@@ -1,4 +1,4 @@
-{% extends 'welcome/base.html' %}
+{% extends "welcome/base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
 
@@ -7,19 +7,17 @@
   <!-- Masthead -->
   <header class="masthead">
     <div class="container h-100">
-      <div class="row h-100 align-items-center ">
         <div class="col-lg-10 align-self-start">
-          <h2 class="text-uppercase text-white font-weight-bold center">Créez votre compte</h2>
+          <h2 class="text-uppercase text-white font-weight-bold center">Se connecter</h2>
           <hr class="divider my-4">
         </div>
-        <div class="col-lg-10 align-content-justify">
+        <div class="col-lg-10 align-content-center">
           <form method="POST">
             {% csrf_token %}
                 {{ form|crispy }}
-            <button class="btn btn-outline-info" type="submit"> S'inscrire</button>
+            <button class="btn btn-outline-info" type="submit">Se connecter</button>
           </form>
         </div>
-      </div>
     </div>
   </header>
 

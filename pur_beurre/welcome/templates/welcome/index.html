@@ -1,7 +1,8 @@
-{% extends 'welcome/base.html' %}
+{% extends "welcome/base.html" %}
 {% load static %}
 
 {% block content %}
+<link href="{% static 'accounts/css/style.css' %}" rel="stylesheet">
   <!-- Masthead -->
   <header class="masthead">
     <div class="container h-100">
@@ -45,17 +46,17 @@
         <div class="col-lg-8 text-center">
           <h2 class="mt-0">Contactez-nous !</h2>
           <hr class="divider my-4">
-          <p class="text-muted mb-5">Vous rencontrez un soucis sur notre site, ou vous avez des suggestions à nous faire parvenir? N'hésitez pas à nous contacter !</p>
+          <p class=" mb-5">Vous rencontrez un soucis sur notre site, ou vous avez des suggestions à nous faire parvenir? N'hésitez pas à nous contacter !</p>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-4 ml-auto text-center">
-          <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+          <i class="fas fa-phone fa-3x mb-3"></i>
           <div>+33 (1) 123-0123
           </div>
         </div>
         <div class="col-lg-4 mr-auto text-center">
-          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+          <i class="fas fa-envelope fa-3x mb-3"></i>
           <!-- Make sure to change the email address in anchor text AND the link below! -->
           <a class="d-block" href="mailto:mail@mail.com">mail@mail.com</a>
         </div>
