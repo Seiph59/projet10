@@ -56,9 +56,15 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#myfood"><img class="logo-navbar" src="{% static 'welcome/img/Carrot.png' %}"></a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="{% url 'accounts:logout' %}"><img class="logo-navbar" src="{% static 'welcome/img/LogOut.png' %}"></a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'accounts:login' %}"><img class="logo-navbar">Login</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>

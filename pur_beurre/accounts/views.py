@@ -3,9 +3,6 @@ from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-def index(request):
-    return render(request, 'accounts/create_account.html')
-
 def register(request):
 
     if request.method == 'POST':
@@ -14,7 +11,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Compte de {username} a été créée')
-            return redirect('http://127.0.0.1:8000/')
+            return redirect('welcome/index.html')
     else:
         form = UserRegisterForm()
     return render(request, 'accounts/create_account.html', {'form': form})
