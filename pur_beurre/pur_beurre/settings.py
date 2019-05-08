@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'food.apps.FoodConfig',
     'welcome.apps.WelcomeConfig',
     'accounts.apps.AccountsConfig',
     'crispy_forms',
