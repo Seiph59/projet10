@@ -1,6 +1,6 @@
 import requests
 import datetime
-from food.models import Food
+from food.models import Food, Categorie
 
 def api_research_off():
     """ Launch the API Request to OpenFoodFacts"""
@@ -33,6 +33,14 @@ class Database:
         if product_name is None:
             product_name = product['product_name']
         return product_name
+
+    def get_and_insert_categories_in_db(self, product, food):
+        """Get categories from the product and insert directly in db """
+        categories = product.get('categories')
+        list_categories = categories.split(",")
+        for categorie in list_categories:
+            categorie, _ = Categorie.objects.get_or_create(name=categorie)
+            food.categories.add(categorie)
 
     def get_nutriscore(self, product):
         """ Get the nutriscore, if it doesn't exist
@@ -120,4 +128,5 @@ class Database:
                         last_modified=last_modified_date,
                         openff_id=id_product)
             food.save()
+            self.get_and_insert_categories_in_db(product, food)
 

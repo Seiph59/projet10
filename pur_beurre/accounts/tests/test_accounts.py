@@ -9,15 +9,19 @@ class UserAccountTest(TestCase):
 
 
     def test_new_user_account_created(self):
+        accounts_before = User.objects.count()
+        self.assertEqual(accounts_before, 0)
         User.objects.create_user(username="test", first_name="Al",
         last_name="taga", email="albg@sfr.fr", password="kevin1234")
         accounts_after = User.objects.count()
         self.assertEqual(accounts_after, 1)
 
     def test_account_created_by_client(self):
+        accounts_before = User.objects.count()
+        self.assertEqual(accounts_before, 0)
         client = Client()
         client.post('/register/', {'username': 'seiph', 'first_name': 'Jean',
         'last_name':'Robert', 'email':'jbr@aol.com',
         'password1': 'kevin1234', 'password2': 'kevin1234'})
         account_check = User.objects.count()
-        self.assertEqual(account_check ,1)
+        self.assertEqual(account_check, 1)
