@@ -22,13 +22,14 @@ class Food(models.Model):
     categories = models.ManyToManyField(Categorie)
 
     def get_substitute(self, product_name):
-        f = Food.objects.filter(id=product_name)
+        f = Food.objects.filter(name__icontains=product_name)
+        name_product = f[0].name
         categories = f[0].categories.all()
         categorie_id = categories[0].id
         c = Categorie.objects.filter(pk=categorie_id)
         b = c[0].food_set.all().order_by('nutriscore')
         substitute = b[0].name
-        return substitute
+        return [substitute, name_product]
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

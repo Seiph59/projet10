@@ -40,8 +40,8 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <form action="" method="post">
-              <input type="text" id="search-navbar" placeholder=" Chercher" name="Chercher">
+            <form action="{% url 'food:searchpage' %}" method="GET">
+              <input type="text" id="search-navbar" placeholder=" Chercher" name="search">
             </form>
           </li>
           {% if user.is_authenticated %}
@@ -76,6 +76,7 @@
       </div>
       {% endfor %}
   {% endif %}
+
   {% block content %}{% endblock %}
 
 

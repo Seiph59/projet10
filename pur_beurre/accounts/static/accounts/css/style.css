@@ -1,6 +1,7 @@
-form {
-    width: 75%;
-    color: white;
+.search-btn {
+    background-color:#f4623a;
+    height:100%;
+    border-color:#f4623a;
 }
 
 .profile {
