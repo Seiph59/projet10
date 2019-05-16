@@ -4,6 +4,39 @@
     border-color:#f4623a;
 }
 
+.header-foodsearch {
+    height: 30vh !important;
+    min-height: 10rem !important;
+}
+
+.margintop {
+    margin-top: 72px;
+}
+.color {
+    background-color: #345a61 !important;
+}
+
+.food-img {
+    width: 300px;
+    height: 450px;
+}
+
+.article-img {
+    border-radius: 10px;
+    height: 250px;
+    display: block;
+    margin: auto;
+    width: 200px;
+}
+
+.research {
+    background-color: #e8a75d;
+    height: 100vh;
+    min-height: 40rem;
+    padding-top: 72px;
+    padding-bottom: 0;
+}
+
 .profile {
     color:white;
 }

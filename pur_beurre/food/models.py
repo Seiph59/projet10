@@ -24,12 +24,12 @@ class Food(models.Model):
     def get_substitute(self, product_name):
         f = Food.objects.filter(name__icontains=product_name)
         name_product = f[0].name
+        image = f[0].url_picture
         categories = f[0].categories.all()
         categorie_id = categories[0].id
-        c = Categorie.objects.filter(pk=categorie_id)
-        b = c[0].food_set.all().order_by('nutriscore')
-        substitute = b[0].name
-        return [substitute, name_product]
+        category_get = Categorie.objects.filter(pk=categorie_id)
+        substitutes_ordered = category_get[0].food_set.all().order_by('nutriscore')
+        return [substitutes_ordered, name_product, image]
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -1,10 +1,11 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from food.views import ResearchView
 
 from . import views
 
 
 app_name = 'food'
 urlpatterns = [
-    path('search/', views.search, name='searchpage'),
+    path('results/', ResearchView.as_view() , name='resultpage'),
 ]
