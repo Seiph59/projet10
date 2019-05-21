@@ -7,5 +7,6 @@ from . import views
 
 app_name = 'food'
 urlpatterns = [
-    path('results/', ResearchView.as_view() , name='resultpage'),
+    path('results/', ResearchView.as_view(), name='resultpage'),
+    path('food/<int:food_id>/', views.food_page, name='foodpage'),
 ]

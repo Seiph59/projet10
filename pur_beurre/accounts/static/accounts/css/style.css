@@ -4,9 +4,41 @@
     border-color:#f4623a;
 }
 
+.margin-top {
+    margin-top: 4%;
+}
+
+.margin-text {
+    margin-left: 30px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+.margin-bottom {
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.h-30 {
+    height: 30%;
+}
+
+.top-right {
+    position: absolute;
+    top: -20px;
+    right: 25%;
+    font-size: 2rem;
+    text-transform: uppercase;
+    background-color: #e8a75d;
+    border-radius: 50px;
+}
+
 .header-foodsearch {
     height: 30vh !important;
     min-height: 10rem !important;
+    opacity: 0.8;
 }
 
 .margintop {

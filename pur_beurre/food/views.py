@@ -4,6 +4,11 @@ from django.views import View
 from .models import Food
 
 
+
+def food_page(request, food_id):
+    article = Food.objects.get(pk=food_id)
+    return render(request, 'food/food_details.html', {'article': article})
+
 class ResearchView(View):
     food = Food()
     template_name = 'food/search_page.html'
