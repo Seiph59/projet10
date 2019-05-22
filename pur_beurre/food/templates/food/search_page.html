@@ -19,7 +19,7 @@
   <div class="col-lg-10 mx-auto row align-items-center card-body ">
       {% for article in articles_found %}
           <div class="mx-auto article col-lg-4 col-sm-12 text-black center-content">
-              <a href={% url 'food:foodpage' food_id=article.id %} ><img class= "article-img align-items-center mx-auto" src="{{ article.url_picture }}"></a></br>
+              <a href={% url 'food:food_detail' food_id=article.id %} ><img class= "article-img align-items-center mx-auto" src="{{ article.url_picture }}"></a></br>
               <p class="article-name center"> {{ article.name }} </p></br>
               <p class="article-nutriscore top-right"> {{ article.nutriscore }}</p> </br>
           </div>
