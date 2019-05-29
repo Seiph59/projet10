@@ -20,6 +20,7 @@ class Food(models.Model):
     last_modified = models.DateField()
     openff_id = models.BigIntegerField()
     categories = models.ManyToManyField(Categorie)
+    favorite_users = models.ManyToManyField(User, related_name="favorite_foods")
 
     def get_substitute(self, product_name):
         f = Food.objects.filter(name__icontains=product_name)
@@ -30,9 +31,3 @@ class Food(models.Model):
         category_get = Categorie.objects.filter(pk=categorie_id)
         substitutes_ordered = category_get[0].food_set.all().order_by('nutriscore')
         return [substitutes_ordered, name_product, image]
-
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    favorite_foods = models.ManyToManyField(Food)
-
-# Create your models here.

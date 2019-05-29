@@ -18,10 +18,21 @@
   <div class="row justify-content">
   <div class="col-lg-10 mx-auto row align-items-center card-body ">
       {% for article in articles_found %}
-          <div class="mx-auto article col-lg-4 col-sm-12 text-black center-content">
+          <div class="mx-auto article col-lg-4 col-sm-12 text-black center-content margin-top">
               <a href={% url 'food:food_detail' food_id=article.id %} ><img class= "article-img align-items-center mx-auto" src="{{ article.url_picture }}"></a></br>
-              <p class="article-name center"> {{ article.name }} </p></br>
-              <p class="article-nutriscore top-right"> {{ article.nutriscore }}</p> </br>
+              <p class="article-name center"> {{ article.name }} </p>
+              <p class="article-nutriscore top-right"> {{ article.nutriscore }} </p>
+              {% if user.is_authenticated %}
+              <div class="save_func">
+                <form class="center">
+                  {% csrf_token %}
+                  <input type="hidden" name="food_id" value="{{ article.pk }}">
+                  <button class="btn btn-primary save_food" data-food-id="{{ article.pk }}">
+                    <i class="far fa-save"></i> Sauvegarder
+                  </button>
+                </form>
+              </div>
+              {% endif %}
           </div>
       {% endfor %}
         </div>
@@ -45,4 +56,8 @@
 
     </span>
   </div>
+
+  <script src="{% static 'food/js/ajax_post.js' %}"></script>
+  <script src="{% static 'food/js/save.js' %}"></script>
+
 {% endblock %}
