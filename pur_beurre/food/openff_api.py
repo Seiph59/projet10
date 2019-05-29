@@ -1,6 +1,9 @@
-import requests
+""" File which generate the database from
+OpenfoodFacts API """
 import datetime
+import requests
 from food.models import Food, Categorie
+
 
 def api_research_off():
     """ Launch the API Request to OpenFoodFacts"""
@@ -15,7 +18,8 @@ def api_research_off():
         "action": "process",
     }
 
-    request = requests.get('https://fr.openfoodfacts.org/cgi/search.pl', params=criteria_api)
+    request = requests.get('https://fr.openfoodfacts.org/cgi/search.pl',
+                           params=criteria_api)
     data = request.json()
     return data
 
@@ -47,7 +51,6 @@ class Database:
         return None """
         return product.get('nutrition_grade_fr')
 
-
     def get_url_page(self, product):
         """ Get the url of the product """
         return product.get('url')
@@ -63,10 +66,10 @@ class Database:
         saturated_fat_100g = product['nutriments'].get('saturated-fat_100g')
         sugars_100g = product['nutriments'].get('sugars_100g')
         salt_100g = product['nutriments'].get('salt_100g')
-        fat_level = product['nutrient_levels'].get ('fat')
-        saturated_fat_level = product['nutrient_levels'].get ('saturated-fat')
-        sugars_level = product['nutrient_levels'].get ('sugars')
-        salt_level = product['nutrient_levels'].get ('salt')
+        fat_level = product['nutrient_levels'].get('fat')
+        saturated_fat_level = product['nutrient_levels'].get('saturated-fat')
+        sugars_level = product['nutrient_levels'].get('sugars')
+        salt_level = product['nutrient_levels'].get('salt')
 
         if fat_100g is None or fat_level is None:
             return None
@@ -77,10 +80,14 @@ class Database:
         elif salt_100g is None or salt_level is None:
             return None
         else:
-            return[fat_100g, fat_level, saturated_fat_100g,
-            saturated_fat_level, sugars_100g, sugars_level,
-            salt_100g, salt_level]
-
+            return[fat_100g,
+                   fat_level,
+                   saturated_fat_100g,
+                   saturated_fat_level,
+                   sugars_100g,
+                   sugars_level,
+                   salt_100g,
+                   salt_level]
 
     def get_id_product(self, product):
         """ Get the id_product from the API, pay attention
@@ -100,17 +107,17 @@ class Database:
         for product in data['products']:
             product_name = self.get_product_name(product)
             nutriscore = self.get_nutriscore(product)
-            if nutriscore == None:
+            if nutriscore is None:
                 continue
             nutritional_list = self.get_nutritional_mark_for_100g(product)
-            if nutritional_list == None:
+            if nutritional_list is None:
                 continue
             url_page = self.get_url_page(product)
             url_image = self.get_url_image(product)
-            if (not url_image):
+            if(not url_image):
                 continue
             id_product = self.get_id_product(product)
-            if (not id_product) :
+            if(not id_product):
                 continue
             last_modified_date = self.get_last_modified(product)
             food = Food(name=product_name,
@@ -129,4 +136,3 @@ class Database:
                         openff_id=id_product)
             food.save()
             self.get_and_insert_categories_in_db(product, food)
-

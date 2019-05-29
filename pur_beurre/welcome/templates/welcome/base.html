@@ -52,7 +52,7 @@
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{% url 'accounts:myaccount' %}"><img class="logo-navbar" src="{% static 'welcome/img/account.png' %}"></a>
+            <a class="nav-link js-scroll-trigger" href="{% url 'accounts:myaccount' %}"><img class="logo-navbar" ><i class="fas fa-user fa-2x"></i></a>
           </li>
           {% else %}
           <li class="nav-item">
@@ -60,11 +60,11 @@
           </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{% url 'food:foods_saved' %}"><img class="logo-navbar" src="{% static 'welcome/img/Carrot.png' %}"></a>
+            <a class="nav-link js-scroll-trigger" href="{% url 'food:foods_saved' %}"><img class="logo-navbar carrot" src="{% static 'welcome/img/Carrot.png' %}"></a>
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{% url 'accounts:logout' %}"><img class="logo-navbar" src="{% static 'welcome/img/LogOut.png' %}"></a>
+            <a class="nav-link js-scroll-trigger" href="{% url 'accounts:logout' %}"><img class="logo-navbar"><i class="fas fa-sign-out-alt fa-2x"></i></a>
           </li>
           {% else %}
           <li class="nav-item">
@@ -83,8 +83,8 @@
   <footer class="card-footer bg-light py-5">
     <div class="container">
       <div class="small text-center footer-color">
-      <a class="footer-link footer-color" href="#legalnotice">Mentions légales </a> -- Copyright &copy; 2019 Pur Beurre --
-      <a class="footer-link footer-color" href="#contact"> Contact </a>
+      <a class="footer-link footer-color" href="{% url 'welcome:legalnotice' %}">Mentions légales </a> -- Copyright &copy; 2019 Pur Beurre --
+      <a class="footer-link footer-color" href="http://127.0.0.1:8000/#contact"> Contact </a>
       </div>
     </div>
   </footer>

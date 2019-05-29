@@ -9,6 +9,6 @@ document.addEventListener('click', (event) =>{
     ajaxPost("/ajax/", data, function(response){
         console.log("envoi réussi");
         },true);
-    alert(event.target.innerHTML="Aliment ajouté à vos favoris");
+    event.target.innerHTML="Aliment ajouté à vos favoris";
 
 });

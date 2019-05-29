@@ -1,10 +1,15 @@
+""" models file dedicated for food application """
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Categorie(models.Model):
+    """ Create Category model """
     name = models.CharField(max_length=200)
 
+
 class Food(models.Model):
+    """ Create Food model """
     name = models.CharField(max_length=200)
     nutriscore = models.CharField(max_length=1)
     url = models.URLField(max_length=250)
@@ -23,10 +28,12 @@ class Food(models.Model):
     favorite_users = models.ManyToManyField(User, related_name="favorite_foods")
 
     def get_substitute(self, product_name):
-        f = Food.objects.filter(name__icontains=product_name)
-        name_product = f[0].name
-        image = f[0].url_picture
-        categories = f[0].categories.all()
+        """ Method which find the substitute of
+        the food requested """
+        food_requested = Food.objects.filter(name__icontains=product_name)
+        name_product = food_requested[0].name
+        image = food_requested[0].url_picture
+        categories = food_requested[0].categories.all()
         categorie_id = categories[0].id
         category_get = Categorie.objects.filter(pk=categorie_id)
         substitutes_ordered = category_get[0].food_set.all().order_by('nutriscore')

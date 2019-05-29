@@ -1,5 +1,5 @@
+""" File dedicated for urls in food application """
 from django.urls import path
-from django.contrib.auth import views as auth_views
 from food.views import ResearchView
 
 from . import views

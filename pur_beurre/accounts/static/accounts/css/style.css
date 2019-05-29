@@ -4,6 +4,15 @@
     border-color:#f4623a;
 }
 
+.legal {
+    background-color: #86ebe6;
+}
+
+.carrot {
+    height: 28px;
+    width: 25px;
+}
+
 .margin-top {
     margin-top: 4%;
 }
@@ -16,6 +25,14 @@ ul, li {
     list-style: none;
 }
 
+.fa-user {
+    color:black;
+}
+
+.fa-sign-out-alt {
+    color: black;
+}
+
 .margin-bottom {
     margin-bottom: 5%;
     margin-top: 5%;
@@ -23,6 +40,14 @@ ul, li {
 
 .h-30 {
     height: 30%;
+}
+
+.h-50 {
+    height:50%;
+}
+
+.h-80 {
+    height: 80%;
 }
 
 .top-right {

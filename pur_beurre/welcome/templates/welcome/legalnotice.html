@@ -1,0 +1,39 @@
+{% extends "welcome/base.html" %}
+{% load static %}
+
+{% block content %}
+<link href="{% static 'accounts/css/style.css' %}" rel="stylesheet">
+  <!-- Masthead -->
+  <header bg-primary >
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+    </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="page-section legal h-80" >
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-black mt-0 center">Mentions légales Pur Beurre</h2>
+        <div class="col-10 margintop">
+        <ul >
+            <li><b>Entreprise Pur Beurre </b></li>
+            <li><b><u>Propriétaires:</u> Remy et Colette Tatou</b></li>
+            <li><b><u>Siret:</u> 320773369000</b></li>
+            <li><b><u>Coordonnées de l'hébergeur:</u></b><a href="https://www.heroku.com/home">Heroku</a></li>
+            <li><b><u>Template Bootstrap par:</u></b><a href="https://startbootstrap.com/">Start Bootstrap</a></li>
+            <li><b><u>Icone carotte:</u></b><a href="https://thenounproject.com/term/carrot/29691/">Noun Project</a></li>
+            <li><b><u>Icones Font Awesome:</u></b><a href="https://fontawesome.com/">Font Awesome</a></li>
+            <li><b><u>Photo de fond par:</u></b><a href="https://unsplash.com/photos/k60JspcBwKE">Kawin Harasai</a></li>
+            <li><b><u>Code source:</u></b><a href="https://github.com/Seiph59/Projet-8-Django">Github</a></li>
+        </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}
