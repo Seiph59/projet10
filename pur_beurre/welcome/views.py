@@ -1,5 +1,5 @@
 """ Views associated to the Welcome application """
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .forms import SearchForm
 
 
@@ -13,3 +13,7 @@ def index(request):
 def legal(request):
     """ Method associated to the legal_notice page """
     return render(request, 'welcome/legalnotice.html')
+
+def contact(request):
+    """ Method to go directly on contact section"""
+    return redirect(reverse('welcome:home') + '#contact')

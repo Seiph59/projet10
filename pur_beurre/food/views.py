@@ -3,6 +3,7 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.views import View
@@ -48,7 +49,7 @@ def favorite(request):
         data = "le produit a été enregistré"
     return HttpResponse(data)
 
-
+@login_required
 def my_foods(request):
     """ display the page my_foods """
     foods_saved = request.user.favorite_foods.all()

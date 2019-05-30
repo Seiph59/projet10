@@ -9,15 +9,12 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-from pur_beurre.config_settings import DB_PASSWORD, SECRET_KEY
 import os
 import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-SECRET_KEY
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -29,9 +26,12 @@ if os.environ.get('ENV') == 'PRODUCTION':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['pur_beurre.herokuapp.com']
+ALLOWED_HOSTS = ['pur-beurre001.herokuapp.com']
 
-
+if DEBUG:
+    SECRET_KEY = 'kl39$vk4ozu9b4%y-3nze(bk(=w6bfo(s^wivcz0vuj0g)0e05'
+else:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
@@ -82,16 +82,28 @@ WSGI_APPLICATION = 'pur_beurre.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'P8', # os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': 'userP8',
-        'PASSWORD': DB_PASSWORD,
-        'HOST': '',
-        'PORT': '5432',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'P8', # os.path.join(BASE_DIR, 'db.sqlite3'),
+            'USER': 'userP8',
+            'PASSWORD': 'P8user',
+            'HOST': '',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'P8', # os.path.join(BASE_DIR, 'db.sqlite3'),
+            'USER': 'userP8',
+            'PASSWORD': 'password',
+            'HOST': '',
+            'PORT': '5432',
+        }
+    }
 
 
 # Password validation
@@ -131,16 +143,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'welcome:home'
 LOGOUT_REDIRECT_URL ='welcome:home'
 LOGIN_URL = 'accounts:login'
+PURBEURRE_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 INTERNAL_IPS = ['127.0.0.1']
 
 if os.environ.get('ENV') == 'PRODUCTION':
-    PURBEURRE_ROOT = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = os.path.join(PURBEURRE_ROOT, 'staticfiles')
     STATICFILES_DIRS = (
         os.path.join(PURBEURRE_ROOT, 'static'),
     )
@@ -149,3 +161,4 @@ if os.environ.get('ENV') == 'PRODUCTION':
 
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
+django_heroku.settings(locals())
