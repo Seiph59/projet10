@@ -98,7 +98,6 @@ class Database:
         """ Get last_modified date to know if the product
         has been updated lastly and convert it"""
         timestamp = product.get('last_modified_t')
-        # date_formated = date_converted.strftime("%d/%m/%y")
         return datetime.date.fromtimestamp(timestamp)
 
     def populate(self):
