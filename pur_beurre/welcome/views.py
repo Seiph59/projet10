@@ -1,6 +1,6 @@
 """ Views associated to the Welcome application """
 from django.shortcuts import render, redirect, reverse
-from .forms import SearchForm
+from welcome.forms import SearchForm
 
 
 def index(request):

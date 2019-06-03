@@ -1,7 +1,7 @@
 """ Views.py dedicated for views , in 'accounts' application """
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm
+from accounts.forms import UserRegisterForm
 
 
 def register(request):
