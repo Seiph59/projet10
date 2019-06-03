@@ -93,7 +93,7 @@ if DEBUG:
             'PORT': '5432',
         }
     }
-else:
+"""else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -103,7 +103,7 @@ else:
             'HOST': '',
             'PORT': '5432',
         }
-    }
+    }"""
 
 
 # Password validation
