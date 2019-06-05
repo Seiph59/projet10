@@ -16,25 +16,25 @@ def food_page(request, food_id):
     return render(request, 'food/food_details.html', {'article': article})
 
 
-class ResearchView(View):
-    """ class for research page """
+
+def get(request):
+    """ dedicated for get methods """
     food = Food()
     template_name = 'food/search_page.html'
-
-    def get(self, request):
-        """ dedicated for get methods """
-        query = request.GET.get('search')
-        list = self.food.get_substitute(query)
-        substitutes_list = list[0]
-        paginator = Paginator(substitutes_list, 6)
-        page = request.GET.get('page')
-        substitutes_list = paginator.get_page(page)
-        args = ({'food_search': list[1],
-                 'articles_found': substitutes_list,
-                 'image': list[2],
-                 'page': page,
-                 'query': query})
-        return render(request, self.template_name, args)
+    query = request.GET.get('search')
+    list = food.get_substitute(query)
+    if list is False:
+        return render(request, template_name, {'nofood': "Pas d'aliment trouvé"})
+    substitutes_list = list[0]
+    paginator = Paginator(substitutes_list, 6)
+    page = request.GET.get('page')
+    substitutes_list = paginator.get_page(page)
+    args = ({'food_search': list[1],
+                'articles_found': substitutes_list,
+                'image': list[2],
+                'page': page,
+                'query': query})
+    return render(request, template_name, args)
 
 
 @require_POST

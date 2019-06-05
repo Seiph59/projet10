@@ -31,6 +31,8 @@ class Food(models.Model):
         """ Method which find the substitute of
         the food requested """
         food_requested = Food.objects.filter(name__icontains=product_name)
+        if len(food_requested) == 0:
+            return False
         name_product = food_requested[0].name
         image = food_requested[0].url_picture
         categories = food_requested[0].categories.all()

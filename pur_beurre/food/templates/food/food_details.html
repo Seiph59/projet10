@@ -19,17 +19,7 @@
       <div class = "row">
         <div class="col-lg-6 col-sm-12">
           <h4 class="font-weight-bold margin-text margin-top">Nutriscore</h4>
-            {% if article.nutriscore == 'a' %}
-              <img class="" src="{% static 'food/img/nutriscores/a.jpg' %}">
-            {% elif article.nutriscore == 'b' %}
-              <img class="" src="{% static 'food/img/nutriscores/b.jpg' %}">
-            {% elif article.nutriscore == 'c' %}
-              <img class="" src="{% static 'food/img/nutriscores/c.jpg' %}">
-            {% elif article.nutriscore == 'd' %}
-              <img class="" src="{% static 'food/img/nutriscores/d.jpg' %}">
-            {% elif article.nutriscore == 'e' %}
-              <img class="" src="{% static 'food/img/nutriscores/e.jpg' %}">
-            {% endif %}
+          <img class="" src="{% get_static_prefix %}food/img/nutriscores/{{ article.nutriscore }}.jpg"/>
         </div>
           <div class="col-lg-6 col-sm-12">
             <h4 class="font-weight-bold margin-top">Répères nutritionnels pour 100g</h4>

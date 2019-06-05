@@ -20,7 +20,7 @@ More informations on requirements.txt
 
 # To start
 
-1. Create your virtual environment
+1. Create your virtual environment and install 'pur_beurre/requirements.txt'
 
 2. If you want to populate the db with foods, type: "python manage.py populate_db"
 
