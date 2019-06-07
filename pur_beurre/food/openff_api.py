@@ -43,7 +43,6 @@ class Database:
         categories = product.get('categories')
         list_categories = categories.split(",")
         for categorie in list_categories:
-            print(categorie)
             categorie, _ = Categorie.objects.get_or_create(name=categorie)
             food.categories.add(categorie)
 
