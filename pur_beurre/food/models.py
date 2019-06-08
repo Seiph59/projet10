@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Categorie(models.Model):
+class Category(models.Model):
     """ Create Category model """
     name = models.CharField(max_length=200)
 
@@ -24,7 +24,7 @@ class Food(models.Model):
     sugars_level = models.CharField(max_length=10)
     last_modified = models.DateField()
     openff_id = models.BigIntegerField()
-    categories = models.ManyToManyField(Categorie)
+    categories = models.ManyToManyField(Category)
     favorite_users = models.ManyToManyField(User, related_name="favorite_foods")
 
     def get_substitute(self, product_name):
@@ -36,7 +36,7 @@ class Food(models.Model):
         name_product = food_requested[0].name
         image = food_requested[0].url_picture
         categories = food_requested[0].categories.all()
-        categorie_id = categories[0].id
-        category_get = Categorie.objects.filter(pk=categorie_id)
+        category_id = categories[0].id
+        category_get = Category.objects.filter(pk=category_id)
         substitutes_ordered = category_get[0].food_set.all().order_by('nutriscore')
         return [substitutes_ordered, name_product, image]

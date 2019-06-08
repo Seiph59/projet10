@@ -2,7 +2,7 @@
 OpenfoodFacts API """
 import datetime
 import requests
-from food.models import Food, Categorie
+from food.models import Food, Category
 
 
 def api_research_off():
@@ -42,9 +42,9 @@ class Database:
         """Get categories from the product and insert directly in db """
         categories = product.get('categories')
         list_categories = categories.split(",")
-        for categorie in list_categories:
-            categorie, _ = Categorie.objects.get_or_create(name=categorie)
-            food.categories.add(categorie)
+        for category in list_categories:
+            category, _ = Category.objects.get_or_create(name=category)
+            food.categories.add(category)
 
     def get_nutriscore(self, product):
         """ Get the nutriscore, if it doesn't exist
