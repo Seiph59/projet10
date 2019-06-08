@@ -4,6 +4,9 @@
     border-color:#f4623a;
 }
 
+.bg-primary {
+    background-color: #e8a75d !important;
+}
 .notice {
     font-size:80%
 }
