@@ -2,6 +2,9 @@ language: python
 python:
   - '3.6.5'
 
+before_script:
+  - pip install -r pur_beurre/requirements.txt
+
 env:
   - DJANGO_SETTINGS_MODULE="pur_beurre.settings_travis"
   - DJANGO_VERSION=2.2
@@ -10,5 +13,4 @@ services:
   - postgresql
 
 script:
-  - pip install -r pur_beurre/requirements.txt
   - python3 pur_beurre/manage.py test
