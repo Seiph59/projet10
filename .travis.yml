@@ -6,6 +6,12 @@ env:
   - DJANGO_SETTINGS_MODULE="pur_beurre.settings_travis"
   - DJANGO_VERSION=2.2
 
+addons:
+  postgresql: "11"
+    apt:
+      packages:
+        -postgresql-11
+
 services:
   - postgresql
 
