@@ -11,4 +11,4 @@ services:
 
 script:
   - pip install -r pur_beurre/requirements.txt
-  - python pur_beurre/manage.py test food/
+  - python pur_beurre/manage.py test
