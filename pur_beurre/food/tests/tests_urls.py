@@ -1,7 +1,7 @@
 """ Test file for urls in food application """
 from django.test import TestCase
 from django.urls import resolve, reverse
-from food.views import ResearchView, food_page
+from food.views import get, food_page
 
 
 class FoodTests(TestCase):
@@ -10,7 +10,7 @@ class FoodTests(TestCase):
     def test_url_resolve_to_result_page_view(self):
         """ test url for the result_page """
         found = resolve('/results/')
-        self.assertEqual(found.func.view_class, ResearchView)
+        self.assertEqual(found.func, get)
 
     def test_url_resolve_to_food_page_view(self):
         """ test url for the food page """
