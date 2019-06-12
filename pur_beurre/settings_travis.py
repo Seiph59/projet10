@@ -56,3 +56,4 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pur_beurre.wsgi.application'
+STATIC_URL = '/static/'
