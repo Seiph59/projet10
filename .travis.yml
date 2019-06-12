@@ -9,10 +9,10 @@ env:
 services:
   - postgresql
 addons:
-  postgresql: 11
+  postgresql: 9.6
   apt:
     packages:
-      - postgresql-11
+      - postgresql-9.6
 
 script:
   - pip install -r requirements.txt
