@@ -21,17 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['pur-beurre001.herokuapp.com']
+ALLOWED_HOSTS = ['18.219.57.87']
 
-if DEBUG:
-    SECRET_KEY = 'kl39$vk4ozu9b4%y-3nze(bk(=w6bfo(s^wivcz0vuj0g)0e05'
-else:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = ''
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,8 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-]
+    ]
 
 ROOT_URLCONF = 'pur_beurre.urls'
 
@@ -82,29 +76,16 @@ WSGI_APPLICATION = 'pur_beurre.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'P8', # os.path.join(BASE_DIR, 'db.sqlite3'),
-            'USER': 'userP8',
-            'PASSWORD': 'P8user',
-            'HOST': '',
-            'PORT': '5432',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'p8', # os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': 'userp8',
+        'PASSWORD':'test',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'P8', # os.path.join(BASE_DIR, 'db.sqlite3'),
-            'USER': 'userP8',
-            'PASSWORD': 'password',
-            'HOST': '',
-            'PORT': '5432',
-        }
-    }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -157,8 +138,4 @@ if os.environ.get('ENV') == 'PRODUCTION':
         os.path.join(PURBEURRE_ROOT, 'static'),
     )
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
     db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
-django_heroku.settings(locals())
