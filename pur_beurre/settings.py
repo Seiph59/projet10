@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['18.219.57.87']
+ALLOWED_HOSTS = ['']
 
 SECRET_KEY = ''
 
@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'pur_beurre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'p8', # os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': 'userp8',
-        'PASSWORD':'test',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': '', # os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': '',
+        'PASSWORD':'',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
