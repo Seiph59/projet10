@@ -89,9 +89,20 @@ class Database:
                    salt_100g,
                    salt_level]
 
+    def get_id_product_and_check_if_exists(self, product):
+        """ Get the id_product from the API and check if exists
+        , pay attention that on each method, we receive data from parameter
+        ONLY USED ON POPULATE_DB """
+        product_id = product.get('id')
+        if Food.objects.filter(openff_id=product_id).exists():
+            return None
+        else:
+            return product_id
+
     def get_id_product(self, product):
         """ Get the id_product from the API, pay attention
-        that on each method, we receive data from parameter """
+        that on each method, we receive data from parameter
+        ONLY USED ON UPDATE_DB """
         return product.get('id')
 
     def get_last_modified(self, product):
@@ -115,8 +126,8 @@ class Database:
             url_image = self.get_url_image(product)
             if(not url_image):
                 continue
-            id_product = self.get_id_product(product)
-            if(not id_product):
+            id_product = self.get_id_product_and_check_if_exists(product)
+            if(not id_product) or id_product is None:
                 continue
             last_modified_date = self.get_last_modified(product)
             food = Food(name=product_name,
